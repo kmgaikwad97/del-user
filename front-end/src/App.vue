@@ -39,8 +39,12 @@
     <!-- navbar ends -->
 
     <!-- Product starts -->
-    <Products/>
+    <Products />
     <!-- Product ends -->
+
+    <!-- FakeStore starts -->
+    <FakeStore  />
+    <!-- FakeStore ends -->
 
     <!-- User starts -->
     <User/>
@@ -51,11 +55,13 @@
 <script>
 import Products from './components/Products.vue'
 import User from './components/User.vue'
+import FakeStore from './components/FakeStore.vue'
 export default {
     name: 'App',
     components: {
       Products,
-      User
+      User,
+      FakeStore,
     }
 }
 </script>

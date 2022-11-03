@@ -26,6 +26,10 @@
               <td v-text="user.phone"></td>
               <td v-text="user.status"></td>
               <td>
+                <!-- <button
+                  @click="deletedata(user._id)"
+                  class="btnred btn btn-danger"
+                > -->
                 <button
                   @click="deletedata(user._id)"
                   class="btnred btn btn-danger"
@@ -60,11 +64,14 @@ export default {
       this.user = result.data;
     },
     async deletedata(id) {
-      console.log("id", id);
-      let result = await axios.delete("http://localhost:3001/user/" + id);
-      this.getAll();
 
-      console.log(result);
+      this.$store.dispatch("deleteUser",this.deleteUserData)
+
+      // console.log("id", id);
+      // let result = await axios.delete("http://localhost:3001/user/" + id);
+      // this.getAll();
+
+      // console.log(result);
     },
   },
 };

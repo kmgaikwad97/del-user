@@ -5,20 +5,21 @@
             <h2>Products</h2>
         </div>
         <div class="row m-0">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="items of product" :key="items._id">
+            <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="items of product" :key="items._id"> -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="(item,data) in product" :key="data">
                 <figure>
-                    <img :src="items.img" class="img-fluid" alt="">
+                    <img :src="item.img" class="img-fluid" alt="">
                 </figure>
                 <p class="title">
-                   <b>{{items.title}}</b> 
+                   <b>{{item.title}}</b> 
                 </p>
                 <div>
                     <p class="price">
-                       <b>₹ {{items.price}}</b> 
+                       <b>₹ {{item.price}}</b> 
                     </p>
                 </div>
                 <div>
-                    <p>{{items.desc}}</p>
+                    <p>{{item.desc}}</p>
                 </div>
             </div>
         </div>
@@ -41,14 +42,19 @@ export default {
     name:'Product',
     data(){
         return{
-            product:""
+            // product:""
         }
     },
-    async mounted() {
-        const result = await axios.get('http://localhost:3001/getProduct');
-        console.log(result);
-        this.product = result.data
-    },
+    // async mounted() {
+    //     const result = await axios.get('http://localhost:3001/getProduct');
+    //     console.log(result);
+    //     this.product = result.data
+    // },   
+    computed:{
+            product(){
+                return this.$store.state.product;
+            }
+    }
 }
 
 
